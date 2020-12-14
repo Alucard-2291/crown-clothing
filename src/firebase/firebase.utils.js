@@ -14,6 +14,10 @@ const config = {
     measurementId: "G-KKQX3K75R3"
 };
 
+firebase.initializeApp(config);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
 export const createUserProfileDocument = async (userAuth, additonalData) => {
     if (!userAuth) return;
 
@@ -39,10 +43,6 @@ export const createUserProfileDocument = async (userAuth, additonalData) => {
     return userRef;
 }
 
-firebase.initializeApp(config);
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt: 'select_account'});
